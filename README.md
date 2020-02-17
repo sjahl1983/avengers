@@ -40,7 +40,7 @@ To launch your application's tests, run:
 
 Sonar is used to analyse code quality
 
-You can run a Sonar analysis with using the [sonar-scanner] [] or by using the maven plugin.
+You can run a Sonar analysis with using the [sonar-scanner][] or by using the maven plugin.
 
 Then, run a Sonar analysis:
 

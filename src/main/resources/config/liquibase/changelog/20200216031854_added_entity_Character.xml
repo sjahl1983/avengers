@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <property name="autoIncrement" value="true"/>
+
+    <!--
+        Added the entity Character.
+    -->
+    <changeSet id="20200216031854-1" author="sjahl">
+        <createTable tableName="av_character">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="marvel_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="last_sync" type="datetime">
+                <constraints nullable="false" />
+            </column>
+
+        </createTable>
+
+        <dropDefaultValue tableName="av_character" columnName="last_sync" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20200216031854-1-relations" author="sjahl">
+
+        <createTable tableName="av_character_colaborators">
+            <column name="colaborators_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="character_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="character_id, colaborators_id" tableName="av_character_colaborators"/>
+
+        <createTable tableName="av_character_comics">
+            <column name="comics_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="character_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="character_id, comics_id" tableName="av_character_comics"/>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Character.
+    -->
+    <changeSet id="20200216031854-2" author="sjahl">
+
+        <addForeignKeyConstraint baseColumnNames="character_id"
+                                 baseTableName="av_character_colaborators"
+                                 constraintName="fk_av_character_colaborators_av_character_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="av_character"/>
+
+        <addForeignKeyConstraint baseColumnNames="colaborators_id"
+                                 baseTableName="av_character_colaborators"
+                                 constraintName="fk_av_character_colaborators_colaborators_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="colaborator"/>
+
+        <addForeignKeyConstraint baseColumnNames="character_id"
+                                 baseTableName="av_character_comics"
+                                 constraintName="fk_av_character_comics_av_character_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="av_character"/>
+
+        <addForeignKeyConstraint baseColumnNames="comics_id"
+                                 baseTableName="av_character_comics"
+                                 constraintName="fk_av_character_comics_comics_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comic"/>
+
+    </changeSet>
+</databaseChangeLog>

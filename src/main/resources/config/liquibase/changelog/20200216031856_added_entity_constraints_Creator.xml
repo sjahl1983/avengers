@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Creator.
+    -->
+    <changeSet id="20200216031856-2" author="sjahl">
+
+        <addForeignKeyConstraint baseColumnNames="comic_id"
+                                 baseTableName="creator"
+                                 constraintName="fk_creator_comic_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comic"/>
+
+        <addForeignKeyConstraint baseColumnNames="colaborator_id"
+                                 baseTableName="creator"
+                                 constraintName="fk_creator_colaborator_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="colaborator"/>
+
+    </changeSet>
+</databaseChangeLog>
